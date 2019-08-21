@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import { css } from "@emotion/core"
 import Layout from "../components/layout"
@@ -25,10 +25,18 @@ const CartItem = ({ id, name, price, qty }) => {
   )
 }
 
-const SecondPage = () => {
-  let cartItems = !localStorage.getItem("cart")
-    ? []
-    : JSON.parse(localStorage.getItem("cart"))
+const Cart = () => {
+  let [cartItems, setCartItems] = useState([])
+
+  useEffect(() => {
+    let items = !localStorage.getItem("cart")
+      ? null
+      : JSON.parse(localStorage.getItem("cart"))
+
+    if (null != items) {
+      setCartItems(items)
+    }
+  }, [])
 
   let total = 0
   return (
@@ -49,4 +57,4 @@ const SecondPage = () => {
   )
 }
 
-export default SecondPage
+export default Cart
