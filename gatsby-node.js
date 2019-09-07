@@ -4,7 +4,8 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     query {
@@ -33,5 +34,37 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         slug: post.slug,
       },
     })
+  })
+}
+
+/**
+ * Use remote product image with gatsby-image
+ */
+exports.createResolvers = ({
+  actions,
+  cache,
+  createNodeId,
+  createResolvers,
+  store,
+  reporter,
+}) => {
+  const { createNode } = actions
+  createResolvers({
+    WCProducts: {
+      // Add ImageFile for node type WCProducts only.
+      imageFile: {
+        type: `File`,
+        resolve(node, args, context, info) {
+          return createRemoteFileNode({
+            url: node.images[0].src,
+            store,
+            cache,
+            createNode,
+            createNodeId,
+            reporter,
+          })
+        },
+      },
+    },
   })
 }
