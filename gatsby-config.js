@@ -32,7 +32,7 @@ module.exports = {
       resolve: "gatsby-source-woocommerce",
       options: {
         // Base URL of Wordpress site
-        api: "w.test",
+        api: "woo.gkdevil.in",
         // true if using https. false if nah.
         https: false,
         api_keys: {
@@ -43,8 +43,18 @@ module.exports = {
         fields: ["products"],
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Woocommerce Store`,
+        short_name: `Woocommerce Store`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `src/images/gatsby-icon.png`,
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 }
