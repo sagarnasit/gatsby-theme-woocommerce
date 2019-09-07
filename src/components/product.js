@@ -6,9 +6,10 @@
  */
 
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "./layout"
 import { css } from "@emotion/core"
+import Image from "gatsby-image"
 import SEO from "../components/seo"
 import FormatedPrice from "../components/formatedPrice"
 import AddToCartButton from "./addToCart"
@@ -25,33 +26,16 @@ export const query = graphql`
       images {
         src
       }
+      imageFile {
+        childImageSharp {
+          fixed(width: 250) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
   }
 `
-const Img = ({ src }) => {
-  return (
-    <div
-      css={css`
-        img {
-          width: 250px;
-          max-width: 250px;
-        }
-      `}
-    >
-      <img src={src} />
-    </div>
-  )
-}
-
-const ProductImage = ({ images }) => {
-  return (
-    <>
-      {images.map(image => (
-        <Img key={image.src} src={image.src} />
-      ))}
-    </>
-  )
-}
 
 const ProductDetail = ({ id, name, price, description }) => {
   return (
@@ -80,7 +64,7 @@ const Product = ({ data: { wcProducts: post } }) => {
           justify-content: "space-between";
         `}
       >
-        <ProductImage images={post.images} />
+        <Image fixed={post.imageFile.childImageSharp.fixed} />
         <ProductDetail
           id={post.id}
           description={post.description}

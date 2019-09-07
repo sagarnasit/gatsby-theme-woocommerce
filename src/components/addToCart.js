@@ -21,7 +21,6 @@ function addToLocalStorage(product, qty = 1) {
   }
 
   localStorage.setItem("cart", JSON.stringify(products))
-  console.log("add", product)
 }
 
 const AddToCartButton = props => {

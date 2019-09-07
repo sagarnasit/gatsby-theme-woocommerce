@@ -1,8 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-
+import Image from "gatsby-image"
 import Layout from "../components/layout"
-import Image from "../components/image"
 import { css } from "@emotion/core"
 import SEO from "../components/seo"
 import FormatedPrice from "../components/formatedPrice"
@@ -10,14 +9,14 @@ import useProducts from "../hooks/useProducts"
 
 const IndexPage = () => {
   const products = useProducts()
-
+  console.log(products)
   return (
     <Layout>
       <SEO title="Home" />
       <div
         css={css`
           display: flex;
-          justify-content: space-between;
+          justify-content: space-around;
           flex-wrap: wrap;
         `}
       >
@@ -30,6 +29,8 @@ const IndexPage = () => {
 }
 
 const ProductPreview = ({ product }) => {
+  const imageFixed = product.imageFile.childImageSharp.fixed
+  console.log(imageFixed)
   return (
     <div
       css={css`
@@ -57,7 +58,7 @@ const ProductPreview = ({ product }) => {
         `}
       >
         <h4>{product.name}</h4>
-        <img src={product.images[0].src} width="250px" />
+        <Image fixed={imageFixed} />
         <div
           css={css`
             display: flex;

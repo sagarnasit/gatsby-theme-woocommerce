@@ -15,6 +15,13 @@ const useProducts = () => {
           images {
             src
           }
+          imageFile {
+            childImageSharp {
+              fixed(width: 250) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
         }
       }
     }
