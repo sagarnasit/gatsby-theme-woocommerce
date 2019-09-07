@@ -9,7 +9,7 @@ import useProducts from "../hooks/useProducts"
 
 const IndexPage = () => {
   const products = useProducts()
-  console.log(products)
+
   return (
     <Layout>
       <SEO title="Home" />
@@ -30,7 +30,7 @@ const IndexPage = () => {
 
 const ProductPreview = ({ product }) => {
   const imageFixed = product.imageFile.childImageSharp.fixed
-  console.log(imageFixed)
+
   return (
     <div
       css={css`
