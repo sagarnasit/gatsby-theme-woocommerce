@@ -29,20 +29,17 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-woocommerce",
+      resolve: "gatsby-source-graphql",
       options: {
-        // Base URL of Wordpress site
-        api: "woo.gkdevil.in",
-        // true if using https. false if nah.
-        https: false,
-        api_keys: {
-          consumer_key: "",
-          consumer_secret: "",
-        },
-        // Array of strings with fields you'd like to create nodes for...
-        fields: ["products"],
+        // This type will contain remote schema Query type
+        typeName: "WPGraphQL",
+        // This is field under which it's accessible
+        fieldName: "wpgraphql",
+        // Url to query from
+        url: "http://woo.gkdevil.in/graphql",
       },
     },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -55,6 +52,5 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`,
       },
     },
-    `gatsby-plugin-offline`,
   ],
 }
