@@ -65,14 +65,14 @@ const ProductPreview = ({ product }) => {
             justify-content: space-between;
           `}
         >
-          <span className={product.on_sale ? `onSale` : ""}>
-            Price: <FormatedPrice price={product.price} />
+          <span className={product.onSale ? `onSale` : ""}>
+            Price: {product.price}
           </span>
           <span>
-            {product.on_sale ? (
+            {product.onSale ? (
               <>
                 <span>Sale: </span>
-                <FormatedPrice price={product.sale_price} />
+                {product.salePrice}
               </>
             ) : (
               ""

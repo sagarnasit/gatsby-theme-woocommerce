@@ -3,22 +3,24 @@ import { graphql, useStaticQuery } from "gatsby"
 const useProducts = () => {
   const data = useStaticQuery(graphql`
     query MyQuery {
-      allWcProducts {
-        nodes {
-          id
-          name
-          slug
-          status
-          price
-          on_sale
-          sale_price
-          images {
-            src
-          }
-          imageFile {
-            childImageSharp {
-              fixed(width: 250) {
-                ...GatsbyImageSharpFixed
+      wpgraphql {
+        products {
+          nodes {
+            id
+            name
+            slug
+            status
+            price
+            onSale
+            salePrice
+            image {
+              sourceUrl
+            }
+            imageFile {
+              childImageSharp {
+                fixed(width: 250) {
+                  ...GatsbyImageSharpFixed
+                }
               }
             }
           }
@@ -27,7 +29,7 @@ const useProducts = () => {
     }
   `)
 
-  return data.allWcProducts.nodes
+  return data.wpgraphql.products.nodes
 }
 
 export default useProducts

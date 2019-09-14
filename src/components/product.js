@@ -16,20 +16,24 @@ import AddToCartButton from "./addToCart"
 import "./layout.css"
 
 export const query = graphql`
-  query($slug: String) {
-    wcProducts(slug: { eq: $slug }) {
-      id
-      name
-      slug
-      price
-      description
-      images {
-        src
-      }
-      imageFile {
-        childImageSharp {
-          fixed(width: 250) {
-            ...GatsbyImageSharpFixed
+  query($id: ID!) {
+    wpgraphql {
+      product(id: $id) {
+        id
+        name
+        description
+        price
+        slug
+        status
+        onSale
+        image {
+          sourceUrl
+        }
+        imageFile {
+          childImageSharp {
+            fixed(width: 250) {
+              ...GatsbyImageSharpFixed
+            }
           }
         }
       }
@@ -45,31 +49,33 @@ const ProductDetail = ({ id, name, price, description }) => {
       `}
     >
       <h2>{name}</h2>
-      <p>
-        Price: <FormatedPrice price={price} />
-      </p>
+      <p>Price: {price}</p>
 
       <AddToCartButton product={{ id, name, price }} />
     </div>
   )
 }
 
-const Product = ({ data: { wcProducts: post } }) => {
+const Product = ({
+  data: {
+    wpgraphql: { product: product },
+  },
+}) => {
   return (
     <Layout>
-      <SEO title={post.name} />
+      <SEO title={product.name} />
       <div
         css={css`
           display: flex;
           justify-content: "space-between";
         `}
       >
-        <Image fixed={post.imageFile.childImageSharp.fixed} />
+        <Image fixed={product.imageFile.childImageSharp.fixed} />
         <ProductDetail
-          id={post.id}
-          description={post.description}
-          price={post.price}
-          name={post.name}
+          id={product.id}
+          description={product.description}
+          price={product.price}
+          name={product.name}
         />
       </div>
 
@@ -79,7 +85,7 @@ const Product = ({ data: { wcProducts: post } }) => {
           color: grey;
           margin-top: 5px;
         `}
-        dangerouslySetInnerHTML={{ __html: post.description }}
+        dangerouslySetInnerHTML={{ __html: product.description }}
       />
     </Layout>
   )

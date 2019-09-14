@@ -5,17 +5,18 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FormatedPrice from "../components/formatedPrice"
 
-const CartItem = ({ id, name, price, qty, removeItem }) => {
+const CartItem = ({ id, name, price: priceWithCurrency, qty, removeItem }) => {
+  const priceWithoutCurrency = priceWithCurrency.replace("$", "")
   return (
     <li css={style}>
       <h4>{name}</h4>
       <div>{/* <img src={} /> */}</div>
       <span>
-        <FormatedPrice price={price} />
+        <FormatedPrice price={priceWithoutCurrency} />
       </span>{" "}
       x <span>{qty}</span> ={" "}
       <span>
-        <FormatedPrice price={price * qty} />
+        <FormatedPrice price={priceWithoutCurrency * qty} />
       </span>
       <label className="removeItem" href="" onClick={() => removeItem(id)}>
         Remove
@@ -54,7 +55,7 @@ const Cart = () => {
         `}
       >
         {cartItems.map(item => {
-          total += Number.parseInt(item.price) * item.qty
+          total += Number.parseInt(item.price.replace("$", "")) * item.qty
           return (
             <CartItem key={item.id} {...item} removeItem={removeItemFromCart} />
           )
