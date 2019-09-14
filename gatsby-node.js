@@ -9,37 +9,43 @@ const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     query {
-      allWcProducts {
-        nodes {
-          id
-          name
-          slug
-          status
-          on_sale
-          images {
-            src
+      wpgraphql {
+        products {
+          nodes {
+            id
+            name
+            slug
+            status
+            onSale
+            image {
+              sourceUrl
+            }
+            imageFile {
+              childImageSharp {
+                fixed {
+                  src
+                }
+              }
+            }
           }
         }
       }
     }
   `)
 
-  const posts = result.data.allWcProducts.nodes
+  const posts = result.data.wpgraphql.products.nodes
 
   posts.forEach(post => {
     actions.createPage({
       path: post.slug,
       component: require.resolve("./src/components/product.js"),
       context: {
-        slug: post.slug,
+        id: post.id,
       },
     })
   })
 }
 
-/**
- * Use remote product image with gatsby-image
- */
 exports.createResolvers = ({
   actions,
   cache,
@@ -49,14 +55,15 @@ exports.createResolvers = ({
   reporter,
 }) => {
   const { createNode } = actions
+
   createResolvers({
-    WCProducts: {
+    WPGraphQL_Product: {
       // Add ImageFile for node type WCProducts only.
       imageFile: {
         type: `File`,
-        resolve(node, args, context, info) {
+        resolve(source, args, context, info) {
           return createRemoteFileNode({
-            url: node.images[0].src,
+            url: source.image.sourceUrl,
             store,
             cache,
             createNode,
