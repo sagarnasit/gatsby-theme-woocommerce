@@ -13,19 +13,25 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         products {
           nodes {
             id
-            name
-            slug
-            status
-            onSale
-            image {
-              sourceUrl
-            }
-            imageFile {
-              childImageSharp {
-                fixed {
-                  src
+            ... on WPGraphQL_SimpleProduct {
+              id
+              name
+              description
+              image {
+                sourceUrl
+              }
+              attributes {
+                nodes {
+                  name
                 }
               }
+              price
+              onSale
+              slug
+              status
+              type
+              regularPrice
+              salePrice(format: FORMATTED)
             }
           }
         }
@@ -33,14 +39,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     }
   `)
 
-  const posts = result.data.wpgraphql.products.nodes
+  const products = result.data.wpgraphql.products.nodes
 
-  posts.forEach(post => {
+  products.forEach(product => {
     actions.createPage({
-      path: post.slug,
+      path: product.slug,
       component: require.resolve("./src/components/product.js"),
       context: {
-        id: post.id,
+        id: product.id,
       },
     })
   })
@@ -57,7 +63,7 @@ exports.createResolvers = ({
   const { createNode } = actions
 
   createResolvers({
-    WPGraphQL_Product: {
+    WPGraphQL_SimpleProduct: {
       // Add ImageFile for node type WCProducts only.
       imageFile: {
         type: `File`,
