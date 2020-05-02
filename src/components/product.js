@@ -19,20 +19,29 @@ export const query = graphql`
   query($id: ID!) {
     wpgraphql {
       product(id: $id) {
-        id
-        name
-        description
-        price
-        slug
-        status
-        onSale
-        image {
-          sourceUrl
-        }
-        imageFile {
-          childImageSharp {
-            fixed(width: 250) {
-              ...GatsbyImageSharpFixed
+        ... on WPGraphQL_SimpleProduct {
+          id
+          name
+          description
+          image {
+            sourceUrl
+          }
+          attributes {
+            nodes {
+              name
+            }
+          }
+          onSale
+          slug
+          status
+          type
+          regularPrice
+          salePrice
+          imageFile {
+            childImageSharp {
+              fixed(width: 250) {
+                ...GatsbyImageSharpFixed
+              }
             }
           }
         }
