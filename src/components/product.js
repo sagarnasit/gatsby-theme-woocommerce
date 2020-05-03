@@ -31,6 +31,7 @@ export const query = graphql`
               name
             }
           }
+          price
           onSale
           slug
           status

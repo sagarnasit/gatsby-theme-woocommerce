@@ -7,19 +7,30 @@ const useProducts = () => {
         products {
           nodes {
             id
-            name
-            slug
-            status
-            price
-            onSale
-            salePrice
-            image {
-              sourceUrl
-            }
-            imageFile {
-              childImageSharp {
-                fixed(width: 250) {
-                  ...GatsbyImageSharpFixed
+            ... on WPGraphQL_SimpleProduct {
+              id
+              name
+              description
+              image {
+                sourceUrl
+              }
+              attributes {
+                nodes {
+                  name
+                }
+              }
+              price
+              onSale
+              slug
+              status
+              type
+              regularPrice
+              salePrice(format: FORMATTED)
+              imageFile {
+                childImageSharp {
+                  fixed(width: 250) {
+                    ...GatsbyImageSharpFixed
+                  }
                 }
               }
             }

@@ -75,8 +75,8 @@ const ProductPreview = ({ product }) => {
                 {product.salePrice}
               </>
             ) : (
-              ""
-            )}
+                ""
+              )}
           </span>
         </div>
       </Link>

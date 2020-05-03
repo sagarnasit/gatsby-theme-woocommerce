@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
 import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
