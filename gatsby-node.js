@@ -6,6 +6,13 @@
 
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
+let basePath;
+exports.onPreBootstrap = ({ store }, themeOptions) => {
+
+  basePath = themeOptions.basePath || `/`
+
+}
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     query {
@@ -43,7 +50,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   products.forEach(product => {
     actions.createPage({
-      path: product.slug,
+      path: basePath + product.slug,
       component: require.resolve("./src/components/product.js"),
       context: {
         id: product.id,
