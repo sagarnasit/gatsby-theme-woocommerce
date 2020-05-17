@@ -11,7 +11,6 @@ import Layout from "./layout"
 import { css } from "@emotion/core"
 import Image from "gatsby-image"
 import SEO from "../components/seo"
-import FormatedPrice from "../components/formatedPrice"
 import AddToCartButton from "./addToCart"
 import "./layout.css"
 
@@ -68,7 +67,7 @@ const ProductDetail = ({ id, name, price, description }) => {
 
 const Product = ({
   data: {
-    wpgraphql: { product: product },
+    wpgraphql: { product },
   },
 }) => {
   return (

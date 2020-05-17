@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 function addToLocalStorage(product, qty = 1) {
   let products = !localStorage.getItem("cart")
@@ -8,7 +7,7 @@ function addToLocalStorage(product, qty = 1) {
 
   let match = false
   products.map(p => {
-    if (p.id == product.id) {
+    if (p.id === product.id) {
       p.qty += qty
       match = true
     }

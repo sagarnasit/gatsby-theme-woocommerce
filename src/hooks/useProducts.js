@@ -3,6 +3,11 @@ import { graphql, useStaticQuery } from "gatsby"
 const useProducts = () => {
   const data = useStaticQuery(graphql`
     query MyQuery {
+      sitePlugin(name: {eq: "gatsby-theme-woocommerce"}) {
+        pluginOptions {
+          basePath
+        }
+      }
       wpgraphql {
         products {
           nodes {
@@ -40,7 +45,7 @@ const useProducts = () => {
     }
   `)
 
-  return data.wpgraphql.products.nodes
+  return { products: data.wpgraphql.products.nodes, themeOptions: data.sitePlugin.pluginOptions }
 }
 
 export default useProducts

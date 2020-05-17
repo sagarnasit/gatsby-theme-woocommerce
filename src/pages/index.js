@@ -4,11 +4,12 @@ import Image from "gatsby-image"
 import Layout from "../components/layout"
 import { css } from "@emotion/core"
 import SEO from "../components/seo"
-import FormatedPrice from "../components/formatedPrice"
 import useProducts from "../hooks/useProducts"
 
-const IndexPage = () => {
-  const products = useProducts()
+const IndexPage = (props) => {
+
+  const { products, themeOptions } = useProducts()
+  const basePath = themeOptions.basePath || '/';
 
   return (
     <Layout>
@@ -21,14 +22,14 @@ const IndexPage = () => {
         `}
       >
         {products.map(product => (
-          <ProductPreview key={product.id} product={product} />
+          <ProductPreview key={product.id} product={product} path={basePath + product.slug} />
         ))}
       </div>
     </Layout>
   )
 }
 
-const ProductPreview = ({ product }) => {
+const ProductPreview = ({ product, path }) => {
   const imageFixed = product.imageFile.childImageSharp.fixed
 
   return (
@@ -38,7 +39,7 @@ const ProductPreview = ({ product }) => {
       `}
     >
       <Link
-        to={product.slug}
+        to={path}
         css={css`
           text-decoration: none;
           color: black;

@@ -17,9 +17,9 @@ const CartItem = ({ id, name, price: priceWithCurrency, qty, removeItem }) => {
       <span>
         <FormatedPrice price={priceWithoutCurrency * qty} />
       </span>
-      <label className="removeItem" href="" onClick={() => removeItem(id)}>
+      <span className="removeItem" href="" onClick={() => removeItem(id)}>
         Remove
-      </label>
+      </span>
     </li>
   )
 }
@@ -38,7 +38,7 @@ const Cart = () => {
   }, [])
 
   function removeItemFromCart(id) {
-    let updatedCartItems = cartItems.filter(item => item.id != id)
+    let updatedCartItems = cartItems.filter(item => item.id !== id)
     localStorage.setItem("cart", JSON.stringify(updatedCartItems))
     setCartItems(updatedCartItems)
   }
