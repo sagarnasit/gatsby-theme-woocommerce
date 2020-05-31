@@ -1,6 +1,7 @@
 
 const productTemplate = require.resolve("../src/components/product.js");
 const archiveTemplate = require.resolve("../src/components/archive.js");
+const cartTemplate = require.resolve("../src/components/cart.js");
 const chunk = require("lodash/chunk");
 
 module.exports = async ({ actions, graphql, basePath }) => {
@@ -52,6 +53,7 @@ module.exports = async ({ actions, graphql, basePath }) => {
 
     const products = result.data.wpgraphql.products.nodes
 
+    // Create signle page for each product.
     products.forEach(product => {
         actions.createPage({
             path: basePath + product.slug,
@@ -62,8 +64,8 @@ module.exports = async ({ actions, graphql, basePath }) => {
         })
     })
 
+    // Create paginated list of products.
     const perPage = 4
-
     const listPages = chunk(products, perPage)
     const totalArchivePages = listPages.length;
 
@@ -81,5 +83,11 @@ module.exports = async ({ actions, graphql, basePath }) => {
                 }
             },
         })
+    })
+
+    // Create cart page.
+    actions.createPage({
+        path: basePath + 'cart',
+        component: cartTemplate
     })
 }
