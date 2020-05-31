@@ -5,12 +5,11 @@ import Layout from "./layout"
 import { css } from "@emotion/core"
 import Image from "gatsby-image"
 import SEO from "../components/seo"
-import AddToCartButton from "./addToCart"
 import "./layout.css"
 
 
-const Archive = ({ pageContext: { products } }) => {
-
+const Archive = ({ pageContext: { products, pageInfo } }) => {
+    const { basePath, previousPage, nextPage } = pageInfo;
     return (
         <Layout>
             <SEO title="Home" />
@@ -22,15 +21,21 @@ const Archive = ({ pageContext: { products } }) => {
         `}
             >
                 {products.map(product => (
-                    <ProductPreview key={product.id} product={product} path={product.slug} />
+                    <ProductPreview key={product.id} product={product} path={basePath + product.slug} />
                 ))}
+            </div>
+            <div css={css`
+                display: flex;
+                justify-content: center
+            `}>
+                {previousPage != 0 ? <Link to={basePath + (previousPage == 1 ? '' : previousPage)} >Prev</Link> : ''}
+                {nextPage != 0 ? <Link to={basePath + nextPage} >Next</Link> : ''}
             </div>
         </Layout>
     )
 }
 
 const ProductPreview = ({ product, path }) => {
-    console.log(product.imageFile.childImageSharp.fixed);
 
     const imageFixed = product.imageFile.childImageSharp.fixed
 

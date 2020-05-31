@@ -62,9 +62,11 @@ module.exports = async ({ actions, graphql, basePath }) => {
         })
     })
 
-    const perPage = 5
+    const perPage = 4
 
     const listPages = chunk(products, perPage)
+    const totalArchivePages = listPages.length;
+
     listPages.forEach((archiveProduts, index) => {
         const page = index + 1;
         actions.createPage({
@@ -72,6 +74,11 @@ module.exports = async ({ actions, graphql, basePath }) => {
             component: archiveTemplate,
             context: {
                 products: archiveProduts,
+                pageInfo: {
+                    basePath: basePath,
+                    previousPage: page - 1,
+                    nextPage: page == totalArchivePages ? 0 : page + 1
+                }
             },
         })
     })
