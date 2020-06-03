@@ -7,7 +7,6 @@ module.exports = options => {
       author: `@gatsbyjs`,
     },
     plugins: [
-      `gatsby-plugin-emotion`,
       `gatsby-plugin-react-helmet`,
       {
         resolve: `gatsby-source-filesystem`,
@@ -42,6 +41,7 @@ module.exports = options => {
           icon: `${__dirname}/src/images/gatsby-icon.png`,
         },
       },
+      'gatsby-plugin-sass',
     ],
   }
 
