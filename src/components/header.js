@@ -1,45 +1,17 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import { css } from "@emotion/core"
 
 const Header = ({ siteTitle }) => (
   <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
+    className="woocommerce__header"
   >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-        display: `flex`,
-        justifyContent: `space-between`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
+    <div className="woocommerce__header-inner">
+      <h1 className="woocommerce__header-site-link">
+        <Link to="/">{siteTitle}</Link>
       </h1>
-      <Link
-        to="cart"
-        css={css`
-          text-decoration: none;
-          color: #ffff;
-          margin-bottom: 0;
-        `}
-      >
-        View Cart
-      </Link>
+
+      <Link className="woocommerce__header-cart-link" to="cart">View Cart</Link>
     </div>
   </header>
 )

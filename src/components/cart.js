@@ -1,28 +1,8 @@
 import React, { useState, useEffect } from "react"
-import { css } from "@emotion/core"
 import Layout from "../components/layout"
+import CartItem from "../components/cartItem"
 import SEO from "../components/seo"
 import FormatedPrice from "../components/formatedPrice"
-
-const CartItem = ({ id, name, price: priceWithCurrency, qty, removeItem }) => {
-    const priceWithoutCurrency = priceWithCurrency.replace("$", "")
-    return (
-        <li css={style}>
-            <h4>{name}</h4>
-            <div>{/* <img src={} /> */}</div>
-            <span>
-                <FormatedPrice price={priceWithoutCurrency} />
-            </span>{" "}
-      x <span>{qty}</span> ={" "}
-            <span>
-                <FormatedPrice price={priceWithoutCurrency * qty} />
-            </span>
-            <span className="removeItem" href="" onClick={() => removeItem(id)}>
-                Remove
-      </span>
-        </li>
-    )
-}
 
 const Cart = () => {
     let [cartItems, setCartItems] = useState([])
@@ -48,11 +28,7 @@ const Cart = () => {
         <Layout>
             <SEO title="Cart" />
             <h1>Cart</h1>
-            <ul
-                css={css`
-          margin-left: 0;
-        `}
-            >
+            <ul className="woocommerce-cart__wrapper">
                 {cartItems.map(item => {
                     total += Number.parseInt(item.price.replace("$", "")) * item.qty
                     return (
@@ -68,22 +44,4 @@ const Cart = () => {
     )
 }
 
-const style = css`
-  margin-bottom: 30px;
-  list-style: none;
-  font-size: 0.9rem;
-
-  .removeItem {
-    margin-left: 2rem;
-    color: grey;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  h4 {
-    margin-bottom: 0.5rem;
-    font-size: 20px;
-    color: hsl(270, 50%, 40%);
-  }
-`
 export default Cart

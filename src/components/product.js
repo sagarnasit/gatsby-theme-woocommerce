@@ -12,7 +12,6 @@ import { css } from "@emotion/core"
 import Image from "gatsby-image"
 import SEO from "../components/seo"
 import AddToCartButton from "./addToCart"
-import "./layout.css"
 
 export const query = graphql`
   query($id: ID!) {
@@ -52,11 +51,7 @@ export const query = graphql`
 
 const ProductDetail = ({ id, name, price, description }) => {
   return (
-    <div
-      css={css`
-        margin-left: 15px;
-      `}
-    >
+    <div className="woocommerce-product__detail">
       <h2>{name}</h2>
       <p>Price: {price}</p>
 
@@ -73,12 +68,7 @@ const Product = ({
   return (
     <Layout>
       <SEO title={product.name} />
-      <div
-        css={css`
-          display: flex;
-          justify-content: "space-between";
-        `}
-      >
+      <div className="woocommerce-product__wrapper">
         <Image fixed={product.imageFile.childImageSharp.fixed} />
         <ProductDetail
           id={product.id}
@@ -89,11 +79,7 @@ const Product = ({
       </div>
 
       <h4>Product Description:</h4>
-      <div
-        css={css`
-          color: grey;
-          margin-top: 5px;
-        `}
+      <div className="woocommerce-product__description"
         dangerouslySetInnerHTML={{ __html: product.description }}
       />
     </Layout>
