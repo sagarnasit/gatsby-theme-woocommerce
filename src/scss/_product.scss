@@ -1,0 +1,15 @@
+.woocommerce-product {
+  &__wrapper {
+    display: flex;
+    justify-content: "space-between";
+  }
+
+  &__detail {
+    margin-left: 15px;
+  }
+
+  &__description {
+    color: grey;
+    margin-top: 5px;
+  }
+}

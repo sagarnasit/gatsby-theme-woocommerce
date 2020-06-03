@@ -1,0 +1,24 @@
+.woocommerce-cart {
+  &__wrapper {
+    margin-left: 0;
+  }
+
+  &__item {
+    margin-bottom: 30px;
+    list-style: none;
+    font-size: 0.9rem;
+
+    .remove-item {
+      margin-left: 2rem;
+      color: grey;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  &__item-name {
+    margin-bottom: 0.5rem;
+    font-size: 20px;
+    color: hsl(270, 50%, 40%);
+  }
+}

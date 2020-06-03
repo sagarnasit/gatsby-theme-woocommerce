@@ -1,0 +1,27 @@
+.woocommerce__header {
+  background: rebeccapurple;
+  margin-bottom: 1.45rem;
+}
+
+.woocommerce__header-inner {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 1.45rem 1.0875rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.woocommerce__header-site-link {
+  margin: 0;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.woocommerce__header-cart-link {
+  text-decoration: none;
+  color: #ffff;
+  margin-bottom: 0;
+}
