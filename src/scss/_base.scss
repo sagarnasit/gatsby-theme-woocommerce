@@ -35,7 +35,7 @@ h5,
 h6 {
   clear: both;
   font-weight: 300;
-  margin: 0 0 5px;
+  margin: 0 0 10px;
   color: darken($color_body, 20%);
 
   a {
@@ -383,7 +383,7 @@ input[type="submit"],
   border-color: $color_body;
   color: #fff;
   cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
-  padding: 0.5em;
+  padding: 0.5em 1em;
   text-decoration: none;
   font-weight: 600;
   text-shadow: none;
@@ -426,6 +426,14 @@ input[type="submit"],
       opacity: 0.5 !important;
     }
   }
+}
+
+button + button,
+input[type="button"] + input[type="button"],
+input[type="reset"] + input[type="reset"],
+input[type="submit"] + input[type="submit"],
+.button + .button {
+  margin-left: 0.4em;
 }
 
 input[type="checkbox"],

@@ -1,15 +1,39 @@
 .woocommerce-product {
   &__wrapper {
-    display: flex;
+    display: block;
     justify-content: "space-between";
+    text-align: center;
+    margin-bottom: 2em;
   }
 
   &__detail {
-    margin-left: 15px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  &__price,
+  &__name {
+    margin-bottom: 1em;
   }
 
   &__description {
     color: grey;
-    margin-top: 5px;
+    margin-top: 1em;
   }
+
+  @media (min-width: 500px) {
+    &__wrapper {
+      display: flex;
+      text-align: left;
+    }
+
+    &__detail {
+      margin: 2em;
+    }
+  }
+}
+
+.add-to-cart.clicked {
+  background-color: darkgreen;
+  transition: all #{0.25s} cubic-bezier(0.31, -0.105, 0.43, 1.4);
 }

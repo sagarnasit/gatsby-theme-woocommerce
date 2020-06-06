@@ -1,6 +1,15 @@
 import React from "react"
 
-function addToLocalStorage(product, qty = 1) {
+function addToLocalStorage(e, product, qty = 1) {
+
+  document.getElementsByClassName('add-to-cart')[0].classList.add("clicked");
+
+  setTimeout(function () {
+    document.getElementsByClassName('add-to-cart')[0].classList.remove("clicked");
+
+  }, 500);
+
+
   let products = !localStorage.getItem("cart")
     ? []
     : JSON.parse(localStorage.getItem("cart"))
@@ -25,7 +34,7 @@ function addToLocalStorage(product, qty = 1) {
 const AddToCartButton = props => {
   return (
     <>
-      <button onClick={e => addToLocalStorage(props.product)}>
+      <button onClick={e => addToLocalStorage(e, props.product)} className="add-to-cart">
         Add to Cart
       </button>
     </>

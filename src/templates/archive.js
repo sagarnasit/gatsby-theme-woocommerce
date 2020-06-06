@@ -1,12 +1,16 @@
 
 import React from "react"
-import { Link } from "gatsby"
 import Layout from "../components/layout"
 import ProductPreview from "../components/productPreview"
+import Pagination from "../components/paginations"
 import SEO from "../components/seo"
 
 const Archive = ({ pageContext: { products, pageInfo } }) => {
     const { basePath, previousPage, nextPage } = pageInfo;
+
+    const previousPageLink = previousPage != '' ? basePath + (previousPage == 1 ? '/' : previousPage) : '';
+    const nextPageLink = nextPage != 0 ? basePath + nextPage : '';
+
     return (
         <Layout>
             <SEO title="Products" />
@@ -15,10 +19,8 @@ const Archive = ({ pageContext: { products, pageInfo } }) => {
                     <ProductPreview key={product.id} product={product} path={basePath + product.slug} />
                 ))}
             </div>
-            <div className="woocommerce__product-archive-pagination">
-                {previousPage != 0 ? <Link to={basePath + (previousPage == 1 ? '' : previousPage)} >Prev</Link> : ''}
-                {nextPage != 0 ? <Link to={basePath + nextPage} >Next</Link> : ''}
-            </div>
+
+            <Pagination previousPage={previousPageLink} nextPage={nextPageLink} />
         </Layout>
     )
 }

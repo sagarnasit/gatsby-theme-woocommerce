@@ -51,8 +51,8 @@ export const query = graphql`
 const ProductDetail = ({ id, name, price, description }) => {
   return (
     <div className="woocommerce-product__detail">
-      <h2>{name}</h2>
-      <p>Price: {price}</p>
+      <h2 className="woocommerce-product__name">{name}</h2>
+      <p className="woocommerce-product__price">Price: {price}</p>
 
       <AddToCartButton product={{ id, name, price }} />
     </div>
