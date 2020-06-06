@@ -11,6 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "../scss/style.scss"
+import Footer from "./footer"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -32,14 +33,8 @@ const Layout = ({ children }) => {
       <Header siteTitle={title} basePath={basePath} />
       <div className="woocommerce__layout-wrapper">
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a> and
-          {` `}
-          <a href="https://wordpress.com">WordPress</a>
-        </footer>
       </div>
+      <Footer />
     </>
   )
 }

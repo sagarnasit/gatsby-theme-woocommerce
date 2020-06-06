@@ -137,7 +137,7 @@ figure {
 }
 
 table {
-  margin: 0 0 2em;
+  margin: 0 0 1em;
   width: 100%;
 }
 
@@ -237,6 +237,7 @@ body {
   background-color: #f3f3f3;
   color: mix($color_body, #333);
   padding: 1em;
+  margin-top: 2rem;
 
   h1,
   h2,
