@@ -28,18 +28,26 @@ const Cart = () => {
         <Layout>
             <SEO title="Cart" />
             <h1>Cart</h1>
-            <ul className="woocommerce-cart__wrapper">
+            <table className="woocommerce-cart__wrapper">
+                <thead>
+                    <tr>
+                        <th className="product-heading">Product</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Sub Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
                 {cartItems.map(item => {
                     total += Number.parseInt(item.price.replace("$", "")) * item.qty
                     return (
                         <CartItem key={item.id} {...item} removeItem={removeItemFromCart} />
                     )
                 })}
-            </ul>
-            <hr />
-            <p>
-                Total: <FormatedPrice price={total} />
-            </p>
+                <tr>
+                    <td className="woocommerce-cart__total" colSpan="4">Total: <FormatedPrice price={total} /></td>
+                </tr>
+            </table>
         </Layout>
     )
 }

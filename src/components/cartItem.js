@@ -4,19 +4,19 @@ import FormatedPrice from './formatedPrice';
 const CartItem = ({ id, name, price: priceWithCurrency, qty, removeItem }) => {
     const priceWithoutCurrency = priceWithCurrency.replace("$", "")
     return (
-        <li className="woocommerce-cart__item">
-            <h4 className="woocommerce-cart__item-name">{name}</h4>
-            <span>
+        <tr className="woocommerce-cart__item">
+            <td className="woocommerce-cart__item-name">{name}</td>
+            <td>
                 <FormatedPrice price={priceWithoutCurrency} />
-            </span>{" "}
-            x <span>{qty}</span> ={" "}
-            <span>
+            </td>
+            <td>{qty}</td>
+            <td>
                 <FormatedPrice price={priceWithoutCurrency * qty} />
-            </span>
-            <span className="remove-item" href="" onClick={() => removeItem(id)}>
-                Remove
-            </span>
-        </li>
+            </td>
+            <td className="remove-item" href="" onClick={() => removeItem(id)}>
+                <a className="button" >Remove</a>
+            </td>
+        </tr>
     )
 }
 

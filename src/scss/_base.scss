@@ -274,8 +274,8 @@ table {
 
   td,
   th {
-    padding: 1em 2em;
-    text-align: left;
+    padding: 1rem;
+    text-align: right;
     vertical-align: top;
 
     p:last-child {
@@ -289,7 +289,7 @@ table {
 
   thead {
     th {
-      padding: 2em;
+      padding: 1rem;
       vertical-align: middle;
     }
   }
