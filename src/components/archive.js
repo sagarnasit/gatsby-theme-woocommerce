@@ -31,7 +31,7 @@ const ProductPreview = ({ product, path }) => {
         <div className="woocommerce-product">
             <Link className="woocommerce-product__link" to={path}>
                 <h4>{product.name}</h4>
-                <Image fixed={imageFixed} />
+                <Image fixed={imageFixed} style={{ width: 250, height: 250 }} />
                 <div className="woocommerce-product__price-wrapper">
                     <span className={product.onSale ? `onsale` : ""}>
                         Price: {product.price}

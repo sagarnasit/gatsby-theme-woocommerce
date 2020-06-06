@@ -8,7 +8,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "./layout"
-import { css } from "@emotion/core"
 import Image from "gatsby-image"
 import SEO from "../components/seo"
 import AddToCartButton from "./addToCart"
@@ -38,7 +37,7 @@ export const query = graphql`
           salePrice
           imageFile {
             childImageSharp {
-              fixed(width: 250) {
+              fixed(width: 500) {
                 ...GatsbyImageSharpFixed
               }
             }
@@ -69,7 +68,7 @@ const Product = ({
     <Layout>
       <SEO title={product.name} />
       <div className="woocommerce-product__wrapper">
-        <Image fixed={product.imageFile.childImageSharp.fixed} />
+        <Image fixed={product.imageFile.childImageSharp.fixed} style={{ width: 250, height: 250 }} />
         <ProductDetail
           id={product.id}
           description={product.description}

@@ -33,7 +33,7 @@ const useProducts = () => {
               salePrice(format: FORMATTED)
               imageFile {
                 childImageSharp {
-                  fixed(width: 250) {
+                  fixed(width: 500) {
                     ...GatsbyImageSharpFixed
                   }
                 }

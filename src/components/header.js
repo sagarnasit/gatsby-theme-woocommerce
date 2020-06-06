@@ -4,7 +4,7 @@ import React from "react"
 
 const Header = ({ siteTitle }) => (
   <header
-    className="woocommerce__header"
+    className="woocommerce__header site-header"
   >
     <div className="woocommerce__header-inner">
       <h1 className="woocommerce__header-site-link">
