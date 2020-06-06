@@ -3,8 +3,9 @@ module.exports = options => {
   return {
     siteMetadata: {
       title: `Gatsby Woocommerce`,
-      description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-      author: `@gatsbyjs`,
+      description: `Ecommerce store buit with gatsby and wordpress`,
+      basePath: options.basePath ? options.basePath : '/',
+      author: 'sagarnasit'
     },
     plugins: [
       `gatsby-plugin-react-helmet`,
@@ -25,7 +26,7 @@ module.exports = options => {
           // This is field under which it's accessible
           fieldName: "wpgraphql",
           // Url to query from
-          url: options.storeUrl || `"http://woocommerce.com/graphql"`,
+          url: options.storeUrl || `http://woocommerce.com/graphql`,
         },
       },
       `gatsby-plugin-offline`,

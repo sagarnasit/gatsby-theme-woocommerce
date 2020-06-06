@@ -7,10 +7,10 @@
 
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "./layout"
+import Layout from "../components/layout"
 import Image from "gatsby-image"
 import SEO from "../components/seo"
-import AddToCartButton from "./addToCart"
+import AddToCartButton from "../components/addToCart"
 
 export const query = graphql`
   query($id: ID!) {

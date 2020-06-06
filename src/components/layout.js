@@ -18,14 +18,18 @@ const Layout = ({ children }) => {
       site {
         siteMetadata {
           title
+          description
+          basePath
         }
       }
     }
   `)
 
+  const { title, basePath } = data.site.siteMetadata;
+
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={title} basePath={basePath} />
       <div className="woocommerce__layout-wrapper">
         <main>{children}</main>
         <footer>

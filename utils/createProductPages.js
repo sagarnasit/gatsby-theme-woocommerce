@@ -1,7 +1,7 @@
 
-const productTemplate = require.resolve("../src/components/product.js");
-const archiveTemplate = require.resolve("../src/components/archive.js");
-const cartTemplate = require.resolve("../src/components/cart.js");
+const productTemplate = require.resolve("../src/templates/product.js");
+const archiveTemplate = require.resolve("../src/templates/archive.js");
+const cartTemplate = require.resolve("../src/templates/cart.js");
 const chunk = require("lodash/chunk");
 
 module.exports = async ({ actions, graphql, basePath }) => {
