@@ -14,7 +14,7 @@ const Header = ({ siteTitle, basePath }) => {
           <Link to={basePath}>{siteTitle}</Link>
         </h1>
 
-        <Link className="woocommerce__header-cart-link" to={cartPage}>View Cart</Link>
+        <Link id="woocommerce-cart" className="woocommerce__header-cart-link" to={cartPage}>View Cart</Link>
       </div>
     </header>
   )

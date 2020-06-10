@@ -391,6 +391,12 @@ input[type="submit"],
   display: inline-block;
   -webkit-appearance: none;
 
+  &:hover {
+    // transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+    background-color: black;
+  }
+
   &::after {
     display: none;
   }
@@ -403,10 +409,6 @@ input[type="submit"],
     &:hover {
       background-color: $color_links;
     }
-  }
-
-  &:hover {
-    color: #fff;
   }
 
   &.loading {

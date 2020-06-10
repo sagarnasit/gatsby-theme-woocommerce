@@ -38,15 +38,17 @@ const Cart = () => {
                         <th></th>
                     </tr>
                 </thead>
-                {cartItems.map(item => {
-                    total += Number.parseInt(item.price.replace("$", "")) * item.qty
-                    return (
-                        <CartItem key={item.id} {...item} removeItem={removeItemFromCart} />
-                    )
-                })}
-                <tr>
-                    <td className="woocommerce-cart__total" colSpan="4">Total: <FormatedPrice price={total} /></td>
-                </tr>
+                <tbody>
+                    {cartItems.map(item => {
+                        total += Number.parseInt(item.price.replace("$", "")) * item.qty
+                        return (
+                            <CartItem key={item.id} {...item} removeItem={removeItemFromCart} />
+                        )
+                    })}
+                    <tr>
+                        <td className="woocommerce-cart__total" colSpan="4">Total: <FormatedPrice price={total} /></td>
+                    </tr>
+                </tbody>
             </table>
         </Layout>
     )

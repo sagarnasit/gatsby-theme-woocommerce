@@ -2,10 +2,10 @@ import React from "react"
 
 function addToLocalStorage(e, product, qty = 1) {
 
-  document.getElementsByClassName('add-to-cart')[0].classList.add("clicked");
+  document.getElementById('woocommerce-cart').classList.add("shake");
 
   setTimeout(function () {
-    document.getElementsByClassName('add-to-cart')[0].classList.remove("clicked");
+    document.getElementById('woocommerce-cart').classList.remove("shake");
 
   }, 500);
 
