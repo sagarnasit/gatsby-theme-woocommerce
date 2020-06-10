@@ -8,9 +8,8 @@ module.exports = async ({ actions, graphql, basePath }) => {
   const result = await graphql(`
       query {
         wpgraphql {
-          products {
+          products(first: 500, where: {type: SIMPLE}) {
             nodes {
-              id
               ... on WPGraphQL_SimpleProduct {
                 id
                 name

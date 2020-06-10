@@ -29,19 +29,19 @@ module.exports = options => {
           url: options.storeUrl || `http://woocommerce.com/graphql`,
         },
       },
-      `gatsby-plugin-offline`,
       {
         resolve: `gatsby-plugin-manifest`,
         options: {
           name: `Woocommerce Store`,
           short_name: `Woocommerce Store`,
-          start_url: `/`,
-          background_color: `#f7f0eb`,
-          theme_color: `#a2466c`,
+          start_url: options.basePath,
+          background_color: `#2c2d33`,
+          theme_color: `#2c2d33`,
           display: `standalone`,
           icon: `${__dirname}/src/images/gatsby-icon.png`,
         },
       },
+      `gatsby-plugin-offline`,
       'gatsby-plugin-sass',
     ],
   }
