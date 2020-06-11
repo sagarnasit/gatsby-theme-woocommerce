@@ -30,18 +30,18 @@ module.exports = async ({ actions, graphql, basePath }) => {
                 regularPrice
                 salePrice(format: FORMATTED)
                 imageFile {
-                    childImageSharp {
-                        fixed( width: 500) {
-                            width
-                            height
-                            src
-                            srcSet
-                            base64
-                            tracedSVG
-                            srcWebp
-                            srcSetWebp
-                        }
-                      }
+                  childImageSharp {
+                    fixed( width: 500) {
+                      width
+                      height
+                      src
+                      srcSet
+                      base64
+                      tracedSVG
+                      srcWebp
+                      srcSetWebp
+                    }
+                  }
                 }
               }
             }
@@ -64,7 +64,7 @@ module.exports = async ({ actions, graphql, basePath }) => {
   })
 
   // Create paginated list of products.
-  const perPage = 4
+  const perPage = 6
   const listPages = chunk(products, perPage)
   const totalArchivePages = listPages.length;
 
