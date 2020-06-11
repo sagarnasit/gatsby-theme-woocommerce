@@ -1,14 +1,22 @@
 import React from "react"
-import { Link } from "gatsby"
 
-function addToLocalStorage(product, qty = 1) {
+function addToLocalStorage(e, product, qty = 1) {
+
+  document.getElementById('woocommerce-cart').classList.add("shake");
+
+  setTimeout(function () {
+    document.getElementById('woocommerce-cart').classList.remove("shake");
+
+  }, 500);
+
+
   let products = !localStorage.getItem("cart")
     ? []
     : JSON.parse(localStorage.getItem("cart"))
 
   let match = false
   products.map(p => {
-    if (p.id == product.id) {
+    if (p.id === product.id) {
       p.qty += qty
       match = true
     }
@@ -26,7 +34,7 @@ function addToLocalStorage(product, qty = 1) {
 const AddToCartButton = props => {
   return (
     <>
-      <button onClick={e => addToLocalStorage(props.product)}>
+      <button onClick={e => addToLocalStorage(e, props.product)} className="add-to-cart">
         Add to Cart
       </button>
     </>

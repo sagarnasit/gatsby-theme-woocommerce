@@ -7,13 +7,10 @@
 
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "./layout"
-import { css } from "@emotion/core"
+import Layout from "../components/layout"
 import Image from "gatsby-image"
 import SEO from "../components/seo"
-import FormatedPrice from "../components/formatedPrice"
-import AddToCartButton from "./addToCart"
-import "./layout.css"
+import AddToCartButton from "../components/addToCart"
 
 export const query = graphql`
   query($id: ID!) {
@@ -40,7 +37,7 @@ export const query = graphql`
           salePrice
           imageFile {
             childImageSharp {
-              fixed(width: 250) {
+              fixed(width: 500) {
                 ...GatsbyImageSharpFixed
               }
             }
@@ -53,13 +50,9 @@ export const query = graphql`
 
 const ProductDetail = ({ id, name, price, description }) => {
   return (
-    <div
-      css={css`
-        margin-left: 15px;
-      `}
-    >
-      <h2>{name}</h2>
-      <p>Price: {price}</p>
+    <div className="woocommerce-product__detail">
+      <h2 className="woocommerce-product__name">{name}</h2>
+      <p className="woocommerce-product__price">Price: {price}</p>
 
       <AddToCartButton product={{ id, name, price }} />
     </div>
@@ -68,19 +61,14 @@ const ProductDetail = ({ id, name, price, description }) => {
 
 const Product = ({
   data: {
-    wpgraphql: { product: product },
+    wpgraphql: { product },
   },
 }) => {
   return (
     <Layout>
       <SEO title={product.name} />
-      <div
-        css={css`
-          display: flex;
-          justify-content: "space-between";
-        `}
-      >
-        <Image fixed={product.imageFile.childImageSharp.fixed} />
+      <div className="woocommerce-product__wrapper">
+        <Image fixed={product.imageFile.childImageSharp.fixed} style={{ width: 250, height: 250 }} />
         <ProductDetail
           id={product.id}
           description={product.description}
@@ -90,11 +78,7 @@ const Product = ({
       </div>
 
       <h4>Product Description:</h4>
-      <div
-        css={css`
-          color: grey;
-          margin-top: 5px;
-        `}
+      <div className="woocommerce-product__description"
         dangerouslySetInnerHTML={{ __html: product.description }}
       />
     </Layout>

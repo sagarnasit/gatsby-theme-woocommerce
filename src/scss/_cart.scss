@@ -1,0 +1,30 @@
+.woocommerce-cart {
+  &__wrapper {
+    margin-left: 0;
+
+    thead th.product-heading {
+      text-align: left;
+    }
+  }
+
+  &__item {
+    margin-bottom: 30px;
+    list-style: none;
+    font-size: 0.9rem;
+
+    .remove-item {
+      color: grey;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  &__item-name {
+    font-size: 20px;
+    text-align: left;
+  }
+
+  &__total {
+    text-align: right;
+  }
+}

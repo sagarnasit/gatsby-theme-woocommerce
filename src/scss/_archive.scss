@@ -1,0 +1,37 @@
+.woocommerce__product-archive-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.woocommerce__product-archive-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.woocommerce-product {
+  margin-bottom: 50px;
+
+  &__link {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+
+    img {
+      margin-bottom: 0;
+    }
+    h4 {
+      margin-bottom: 5px;
+    }
+  }
+
+  .onsale {
+    text-decoration: line-through;
+    color: grey;
+  }
+
+  &__price-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}
