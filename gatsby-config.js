@@ -26,7 +26,7 @@ module.exports = options => {
           // This is field under which it's accessible
           fieldName: "wpgraphql",
           // Url to query from
-          url: options.storeUrl || `http://woocommerce.com/graphql`,
+          url: options.storeUrl
         },
       },
       {

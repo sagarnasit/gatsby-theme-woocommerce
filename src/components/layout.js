@@ -15,7 +15,7 @@ import Footer from "./footer"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query WooSiteTitleQuery {
       site {
         siteMetadata {
           title
