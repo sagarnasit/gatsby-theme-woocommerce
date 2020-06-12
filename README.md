@@ -35,7 +35,7 @@
 
 - Create fresh Gatsby site with gatsby cli `gatsby new store`
 
-- Install this theme package with `⚙npm i @sagarnasit/gatsby-theme-woocommerce`
+- Install this theme package with `npm i @sagarnasit/gatsby-theme-woocommerce`
 
 - Configure theme in `gatsby-config.js`.
 

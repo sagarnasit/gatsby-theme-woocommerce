@@ -2,7 +2,7 @@
   "name": "@sagarnasit/gatsby-theme-woocommerce",
   "private": false,
   "description": "Gatsby theme for WordPress Woocommerce",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Sagar Nasit <sagarnasit@gmail.com>",
   "dependencies": {
     "gatsby": "2.23.3",
@@ -27,7 +27,12 @@
     "prettier": "^1.18.2"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "react",
+    "wordpress",
+    "woocommerce",
+    "javascript",
+    "ecommerce with gatsby"
   ],
   "main": "gatsby-config.js",
   "license": "MIT",
