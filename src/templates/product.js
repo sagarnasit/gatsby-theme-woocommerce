@@ -72,7 +72,7 @@ const Product = ({
         <ProductDetail
           id={product.id}
           description={product.description}
-          price={product.price}
+          price={product.regularPrice}
           name={product.name}
         />
       </div>
