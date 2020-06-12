@@ -1,8 +1,8 @@
-# Gatsby Woocomerce Theme
+# 📂 Gatsby Woocomerce Theme
 
 - Gatsby theme for WordPress Woocommerce Store. Blazing fast ecommerce store with offline product viewing and offline cart support.
 
-## Features
+## 🔥 Features
 
 - Blazing fast site with Gatsby
 - Woocommerce support WPGraphql Woocommerce
@@ -11,7 +11,7 @@
 - offline Cart page
 - Lazy load images
 
-## Demo
+## 🖥️ Demo
 
 - Click [here](https://gatsby-woocommerce.netlify.app/) to see demo.
 
@@ -21,7 +21,7 @@
 | ------------------------------------------ | --------------- |
 | [Sagar Nasit](mailto:sagarnasit@gmail.com) | @sagarnasit     |
 
-## Setup
+## ⚙️ Setup
 
 ### WordPress Setup
 
@@ -35,15 +35,30 @@
 
 - Create fresh Gatsby site with gatsby cli `gatsby new store`
 
-- Install this plugin as npm package.
+- Install this theme package with `⚙npm i @sagarnasit/gatsby-theme-woocommerce`
 
-- Config gatsby theme package in `gatsby-config.js` file.
+- Configure theme in `gatsby-config.js`.
 
-- Set your WordPress Site Url and store path.
+  ```js
+  module.exports = {
+    plugins: [
+      {
+        resolve: "gatsby-theme-woocommerce",
+        options: {
+          basePath: "/store/",
+          storeUrl: "http://YourWordPressSite.com/graphql",
+        },
+      },
+    ],
+  }
+  ```
 
-- Start development server by `gatsby develop` or build static pages with `gatsby build`.
+  - `basePath` : Provide path for the Woocommerce store.
+  - `storeUrl`: Provide Woocommerce site graphql endpoint.
 
-## 🧐 What's inside?
+* Start development server by `gatsby develop` or build static pages with `gatsby build`. 🎉
+
+## 📝 What's inside?
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
 
